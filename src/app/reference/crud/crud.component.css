@@ -1,0 +1,21 @@
+.uni-container{
+    margin-top:10px;
+}
+.uni-container .btn-wrapper{
+    padding:30px;
+    padding-left: 15px;
+}
+.uni-container .btn-default{
+    color: #58666e !important;
+    background-color: #edf1f2;
+    border-color: #c7d3d6;
+}
+.uni-container .page-heading{
+    padding:10px 15px;
+}
+.uni-container .border-top{
+    border-top: 1px solid #dee5e7;
+}
+.uni-container .list-wrapper{
+    padding:10px;
+}
