@@ -5,13 +5,17 @@ import { RouterModule } from '@angular/router';
 import { Approute } from './app.routes';
 import { CrudComponent } from './reference/crud/crud.component';
 import { FormValidationComponent } from './reference/form-validation/form-validation.component';
+import { HeaderComponent } from './client/header/header.component';
+import { HomepageComponent } from './client/homepage/homepage.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CrudComponent,
-    FormValidationComponent
+    FormValidationComponent,
+    HeaderComponent,
+    HomepageComponent
   ],
   imports: [
     BrowserModule,

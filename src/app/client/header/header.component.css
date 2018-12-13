@@ -1,0 +1,62 @@
+.header-wrap .menubar {
+    display: inline-block;
+    cursor: pointer;
+}
+.header-wrap .menubar span{
+    font-weight: bold;
+    color: #000000;
+    font-size: 16px;
+}
+.header-wrap .section-1{
+    padding-top:7px;
+}
+.header-wrap .lang{
+    text-align: center;
+}
+.header-wrap .lang span{
+    font-weight:500;
+    cursor: pointer;
+}
+.header-wrap .subscribe{
+    text-align: right;
+}
+.header-wrap .date span{
+    font-size:12px;
+}
+.header-wrap .news-paper-title{
+    text-align: center;
+}
+.header-wrap .news-paper-title h3{
+    margin-top: 0;
+    font-size: 35px;
+    font-family: serif;
+}
+.header-wrap .section-2{
+    border-bottom: 1px solid #dedede;
+}
+.header-wrap .menu ul{
+    list-style: none;
+    padding: 0;
+}
+.header-wrap .menu ul li{
+    float: left;
+    padding: 0 12px;
+    font-size: 13px;
+}
+.header-wrap .menu{
+    border-bottom: 2px solid #333333;
+    overflow: hidden;
+    padding: 7px 7px;
+}
+.header-wrap .section-3 {
+    padding: 7px 7px;
+    border-bottom: 1px solid #333333;
+}
+.header-wrap .default-news-panel {
+    padding: 15px 0px;
+    border-right: 1px solid #cccccc;
+}
+.header-wrap .wether{
+    border-left: 1px solid #cccccc;
+    padding-left: 15px;
+}
