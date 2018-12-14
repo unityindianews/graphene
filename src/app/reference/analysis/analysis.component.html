@@ -1,0 +1,55 @@
+<div class="container analysis-container">
+    <div class="row section">
+      <div class="col-md-12">
+          <h3>Two Way Data Binding</h3>
+          <form>
+            <div class="form-group">
+              <label>Name display</label>
+              <div>{{user.name}}</div>
+            </div>
+            <div class="form-group">
+              <label>Name Edit</label>
+              <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="row section">
+      <div class="col-md-12">
+          <h3>Two Way Data Binding ng submit</h3>
+          <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
+              <div class="form-group">
+                <label>Phone display</label>
+                <div>{{user.phone}}</div>
+              </div>
+              <div class="form-group">
+                <label>Phone Edit</label>
+                <input type="text" class="form-control" name="phone" [ngModel]="user.phone">
+                <button class="btn btn-primary submit-btn">Submit</button>
+              </div>
+            </form>
+        </div>
+    </div>
+    <div class="row section">
+        <h3>ngFor</h3>
+        <ul>
+          <li *ngFor="let fruit of this.fruits.varieties">
+              {{fruit}}
+          </li>
+        </ul>
+    </div>
+    <div class="row section">
+        <h3>ngIf</h3>
+        <ul>
+          <span *ngFor="let fruit of this.fruits.varieties">
+            <li *ngIf="fruit!='Apple'">
+                {{fruit}}
+            </li>
+        </span>
+        </ul>
+    </div>
+    <div class="row section">
+        <h3>ngTemplate</h3>
+
+    </div>
+</div>
