@@ -31,25 +31,29 @@
         </div>
     </div>
     <div class="row section">
-        <h3>ngFor</h3>
-        <ul>
-          <li *ngFor="let fruit of this.fruits.varieties">
-              {{fruit}}
-          </li>
-        </ul>
-    </div>
-    <div class="row section">
-        <h3>ngIf</h3>
-        <ul>
-          <span *ngFor="let fruit of this.fruits.varieties">
-            <li *ngIf="fruit!='Apple'">
+        <div class="col-md-12">
+          <h3>ngFor</h3>
+          <ul>
+            <li *ngFor="let fruit of this.fruits.varieties">
                 {{fruit}}
             </li>
-        </span>
-        </ul>
+          </ul>
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-md-12">
+          <h3>ngIf</h3>
+          <ul>
+            <span *ngFor="let fruit of this.fruits.varieties">
+              <li *ngIf="fruit!='Apple'">
+                  {{fruit}}
+              </li>
+          </span>
+          </ul>
+        </div>
     </div>
     <div class="row section">
         <h3>ngTemplate</h3>
-
+        
     </div>
 </div>

@@ -10,6 +10,7 @@ import { FormValidationComponent } from './reference/form-validation/form-valida
 import { HeaderComponent } from './client/header/header.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { AnalysisComponent } from './reference/analysis/analysis.component';
+import { ResearchComponent } from './reference/research/research.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { AnalysisComponent } from './reference/analysis/analysis.component';
     FormValidationComponent,
     HeaderComponent,
     HomepageComponent,
-    AnalysisComponent
+    AnalysisComponent,
+    ResearchComponent
   ],
   imports: [
     BrowserModule,
