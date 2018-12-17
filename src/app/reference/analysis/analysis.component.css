@@ -7,3 +7,13 @@
 .analysis-container{
     padding:15px;
 }
+.cur-pointer{
+    cursor: pointer;
+}
+.bg-color{
+    background: #1fff47;
+}
+.display{
+    border: 1px solid #cccccc;
+    padding: 15px; 
+}

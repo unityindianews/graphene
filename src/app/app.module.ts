@@ -10,7 +10,10 @@ import { FormValidationComponent } from './reference/form-validation/form-valida
 import { HeaderComponent } from './client/header/header.component';
 import { HomepageComponent } from './client/homepage/homepage.component';
 import { AnalysisComponent } from './reference/analysis/analysis.component';
-import { ResearchComponent } from './reference/research/research.component';
+import { DefaultPipe } from './_pipe/default.pipe';
+import { CustomDirective } from './_directives/custom.directive';
+import { AnalysisService } from './_service/analysis.service';
+
 
 
 @NgModule({
@@ -21,7 +24,8 @@ import { ResearchComponent } from './reference/research/research.component';
     HeaderComponent,
     HomepageComponent,
     AnalysisComponent,
-    ResearchComponent
+    DefaultPipe,
+    CustomDirective
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,7 @@ import { ResearchComponent } from './reference/research/research.component';
     RouterModule,
     RouterModule.forRoot(Approute,{useHash:true})
   ],
-  providers: [],
+  providers: [AnalysisService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

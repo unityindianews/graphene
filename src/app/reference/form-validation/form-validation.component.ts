@@ -8,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 export class FormValidationComponent implements OnInit {
 
   constructor() { }
-
+  user:any;
   ngOnInit() {
+    this.user={
+      firstname:"",
+      lastname:""
+    }
   }
-
+formValidation(value:any)
+{
+  this.user.firstname=value.firstname;
+  this.user.lastname=value.lastname;
+ console.log(value.lastname);
+}
 }

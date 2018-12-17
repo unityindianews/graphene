@@ -1,7 +1,8 @@
 <div class="container analysis-container">
     <div class="row section">
       <div class="col-md-12">
-          <h3>Two Way Data Binding</h3>
+          <h4>Two Way Data Binding</h4>
+          <p>characterize TUB</p>
           <form>
             <div class="form-group">
               <label>Name display</label>
@@ -16,7 +17,8 @@
     </div>
     <div class="row section">
       <div class="col-md-12">
-          <h3>Two Way Data Binding ng submit</h3>
+          <h4>Data Binding ng submit</h4>
+          <p>characterize TUB</p>
           <form #form="ngForm" (ngSubmit)="submitForm(form.value)">
               <div class="form-group">
                 <label>Phone display</label>
@@ -30,30 +32,266 @@
             </form>
         </div>
     </div>
+    <h3>Built-in Directives</h3>
     <div class="row section">
         <div class="col-md-12">
-          <h3>ngFor</h3>
-          <ul>
+            <h4>ngFor</h4>
+            <p>characterize TUB</p>
+            <ul>
             <li *ngFor="let fruit of this.fruits.varieties">
                 {{fruit}}
             </li>
-          </ul>
+            </ul>
         </div>
     </div>
     <div class="row section">
         <div class="col-md-12">
-          <h3>ngIf</h3>
-          <ul>
+            <h4>ngIf</h4>
+            <p>characterize TUB</p>
+            <ul>
             <span *ngFor="let fruit of this.fruits.varieties">
-              <li *ngIf="fruit!='Apple'">
-                  {{fruit}}
-              </li>
-          </span>
-          </ul>
+                <li *ngIf="fruit!='Apple'">
+                    {{fruit}}
+                </li>
+            </span>
+            </ul>
         </div>
     </div>
     <div class="row section">
-        <h3>ngTemplate</h3>
-        
+        <div class="col-md-12">
+            <h4>ngSwitch, ngStyle & ngClass</h4>
+            <p>characterize TUB</p>
+            <ul>
+                <span *ngFor="let person of person" [ngSwitch]="person.country">
+                    <li *ngSwitchCase="'India'" [ngStyle]="{'background-color':person.country === 'India' ? '#51a1ff' : 'red' }" >(IND) {{person.name}}</li>
+                    <li *ngSwitchCase="'UK'" [ngClass]="{'bg-color':person.country === 'UK'}">(UK) {{person.name}}</li>
+                    <li *ngSwitchCase="'US'">(US) {{person.name}}</li>
+                    <li *ngSwitchDefault>(Default) {{person.name}}</li>
+                </span>
+            </ul>
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-md-12">
+            <h3>ngTemplate</h3>
+            <p>characterize TUB</p>
+            <div *ngIf="editMode else view then edit"></div>
+            <ng-template #view>
+                <div class="col-md-12">
+                    <h4>View Form</h4>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <div>{{user.name}}</div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" (click)="editForm()">Edit</button>
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+            <ng-template #edit>
+                <div class="col-md-12">
+                    <h4>Edit Form</h4>
+                    <form>
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" name="name" [(ngModel)]="user.name">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary" (click)="viewForm()">View</button>
+                        </div>
+                    </form>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-md-12">
+            <h3>Default Pipe</h3>
+            <p>characterize TUB</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Before pipe</th>
+                        <th>After pipe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{user.dob}}</td>
+                        <td>{{user.dob | date:format}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{user}}</td>
+                        <td>{{user | json}}</td>
+                    </tr>
+                    <tr>
+                        <td>[1,2,3,4,5,6]</td>
+                        <td>{{ [1,2,3,4,5,6] | slice:1:3 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="row section">
+        <div class="col-md-12">
+            <h3>Custom Pipe</h3>
+            <p>characterize TUB</p>
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Before pipe</th>
+                            <th>After pipe</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><img width="150" [src]="imageUrl"></td>
+                            <td><img width="150" [src]="imageUrl | default:'../assets/images/sample.jpg'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-md-12">
+            <h3>Event Binding</h3>
+            <p>characterize TUB</p>
+            <div class="col-md-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th width="150px">Event</th>
+                        <th width="200px">Output</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>(focus)</td>
+                            <td><span *ngIf="this.enventBinding.focus=='focused'">{{this.enventBinding.focus}}</span></td>
+                            <td><input type="text" class="form-control" (focus)="focusEvent()"></td>
+                        </tr>
+                        <tr>
+                            <td>(blur)</td>
+                            <td><span *ngIf="this.enventBinding.blur=='blur works'">{{this.enventBinding.blur}}</span></td>
+                            <td><input type="text" class="form-control" (blur)="blurEvent()"></td>
+                        </tr>
+                        <tr>
+                            <td>(submit)</td>
+                            <td><span *ngIf="this.enventBinding.submit=='submitted'">{{this.enventBinding.submit}}</span></td>
+                            <td>
+                                <form (submit)="sumbitEvent()">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>(scroll)</td>
+                            <td><span *ngIf="this.enventBinding.scroll=='scroll works'">{{this.enventBinding.scroll}}</span></td>
+                            <td>
+                                <textarea class="form-control" (scroll)="scrollEvent()">scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content, scroll this content</textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>(cut)</td>
+                            <td><span *ngIf="this.enventBinding.cut=='cut works'">{{this.enventBinding.cut}}</span></td>
+                            <td><input type="text" class="form-control" (cut)="cutEvent()" value="cut this text (ctrl-x)"></td>
+                        </tr>
+                        <tr>
+                            <td>(copy)</td>
+                            <td><span *ngIf="this.enventBinding.copy=='copy works'">{{this.enventBinding.copy}}</span></td>
+                            <td><input type="text" class="form-control" (copy)="copyEvent()" value="copy this text (ctrl-c)"></td>
+                        </tr>
+                        <tr>
+                            <td>(paste)</td>
+                            <td><span *ngIf="this.enventBinding.paste=='paste works'">{{this.enventBinding.paste}}</span></td>
+                            <td><input type="text" class="form-control" (paste)="pasteEvent()" placeholder="paste some text (ctrl-v)"></td>
+                        </tr>
+                        <tr>
+                            <td>(keydown)</td>
+                            <td><span *ngIf="this.enventBinding.keydown=='keydown works'">{{this.enventBinding.keydown}}</span></td>
+                            <td><input type="text" class="form-control" (keydown)="keydownEvent()" placeholder="start typing"></td>
+                        </tr>
+                        <tr>
+                            <td>(keypress)</td>
+                            <td><span *ngIf="this.enventBinding.keypress=='keypress works'">{{this.enventBinding.keypress}}</span></td>
+                            <td><input type="text" class="form-control" (keypress)="keypressEvent()" placeholder="start typing"></td>
+                        </tr>
+                        <tr>
+                            <td>(keyup)</td>
+                            <td><span *ngIf="this.enventBinding.keyup=='keyup works'">{{this.enventBinding.keyup}}</span></td>
+                            <td><input type="text" class="form-control" (keyup)="keyupEvent()" placeholder="start typing"></td>
+                        </tr>
+                        <tr>
+                            <td>(mouseenter)</td>
+                            <td><span *ngIf="this.enventBinding.mouseenter=='mouseenter works'">{{this.enventBinding.mouseenter}}</span></td>
+                            <td><div><a class="cur-pointer" (mouseenter)="mouseenterEvent()">enter you mouse</a></div></td>
+                        </tr>
+                        <tr>
+                            <td>(mousedown)</td>
+                            <td><span *ngIf="this.enventBinding.mousedown=='mousedown works'">{{this.enventBinding.mousedown}}</span></td>
+                            <td><input type="text" class="form-control" (mousedown)="mousedownEvent()" placeholder="mousedown"></td>
+                        </tr>
+                        <tr>
+                            <td>(mouseup)</td>
+                            <td><span *ngIf="this.enventBinding.mouseup=='mouseup works'">{{this.enventBinding.mouseup}}</span></td>
+                            <td><input type="text" class="form-control" (mouseup)="mouseupEvent()" placeholder="mouseup"></td>
+                        </tr>
+                        <tr>
+                            <td>(click)</td>
+                            <td><span *ngIf="this.enventBinding.click=='click works'">{{this.enventBinding.click}}</span></td>
+                            <td><button class="btn btn-primary" (click)="clickEvent()">click</button></td>
+                        </tr>
+                        <tr>
+                            <td>(dblclick)</td>
+                            <td><span *ngIf="this.enventBinding.dblclick=='double works'">{{this.enventBinding.dblclick}}</span></td>
+                            <td><button class="btn btn-primary" (dblclick)="dblclickEvent()">double click</button></td>
+                        </tr>
+                        <tr>
+                            <td>(drag)</td>
+                            <td></td>
+                            <td>TBU</td>
+                        </tr>
+                        <tr>
+                            <td>(dragover)</td>
+                            <td></td>
+                            <td>TBU</td>
+                        </tr>
+                        <tr>
+                            <td>(drop)</td>
+                            <td></td>
+                            <td>TBU</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row section">
+        <h4>Custom Directives</h4>
+        <div class="display">
+            This is sample Custom Directives for test (without Directives)
+        </div>
+        <div class="display" appCustom>
+            This is sample Custom Directives for test (with Directives) 
+        </div>
+    </div>
+    <div class="row section">
+        <div class="col-md-12">
+            <h4>Service</h4>
+            <div class="row">
+                <div class="col-md-2"><button class="btn btn-primary" (click)="serviceDemo()">Call Service Request</button></div>
+                <div class="col-md-1"><button class="btn btn-primary" (click)="clearServiceDemo()">Clear</button></div>
+                <div class="col-md-9">Response: {{serviceRes}}</div>
+            </div>
+        </div>
     </div>
 </div>

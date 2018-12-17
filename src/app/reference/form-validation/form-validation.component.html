@@ -1,3 +1,32 @@
-<p>
-  form-validation works!
-</p>
+<div class="container">
+  <div class="row">
+    <form #form="ngForm" (ngSubmit)="formValidation(form.value)">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>First name</label>
+          <input type="text" class="form-control" name="firstname" placeholder="First name" [ngModel]="user.firstname">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+            <label>Middle name</label>
+            <input type="text" class="form-control" name="middlename" placeholder="Middle name" [ngModel]="user.middlename">
+        </div>
+      </div>
+      <div class="col-md-4">
+          <div class="form-group">
+              <label> name</label>
+              <input type="text" class="form-control" name="lastname" placeholder="Last name" [ngModel]="user.lastname">
+          </div>
+        </div>
+          <div class="form-group">
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        <div>
+            {{user.firstname}}
+            {{user.lastname}}
+          </div>
+    </form>
+  </div>
+</div>
+
