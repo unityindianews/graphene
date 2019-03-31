@@ -15,10 +15,11 @@ export class FormValidationComponent implements OnInit {
       lastname:""
     }
   }
-formValidation(value:any)
-{
-  this.user.firstname=value.firstname;
-  this.user.lastname=value.lastname;
- console.log(value.lastname);
-}
+  formValidation(value:any)
+  {
+    console.log(value);
+    this.user.firstname=value.firstname;
+    this.user.lastname=value.lastname;
+
+  }
 }

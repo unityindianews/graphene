@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+	background:#f1f1f1;
+}
+.ng2-opd-popup-content-main{
+    top:20% !important;
+}

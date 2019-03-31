@@ -24,6 +24,7 @@
     "@ng-idle/core": "^6.0.0-beta.3",
     "bootstrap": "^4.1.2",
     "core-js": "^2.4.1",
+    "ng2-opd-popup": "^1.1.21",
     "nodemon": "^1.18.7",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"

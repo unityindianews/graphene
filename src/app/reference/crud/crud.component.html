@@ -1,9 +1,9 @@
+<header>
+    <h5>CRUD Operation</h5>
+</header>
 <div class="container-fluid uni-container">
-    <header>
-        <h4>CRUD Operation</h4>
-    </header>
     <div class="row">
-      <div class="col-md-3">
+      <div class="col-md-4">
         <div class="panel panel-default">
           <div class="page-heading">
             <div class="row">
@@ -12,60 +12,44 @@
               </div>
             </div>
           </div>
-       
+			
+			<div class="col-md-12 list-wrapper">
+				<span>Lists</span>
+			</div>
+
           <div class="panel-body scrollBar">
               <div class="row">
-                <div class="col-md-12 list-wrapper">
-                    <span>Lists</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="outer">
-                    <div class="col-md-12 border-top list-wrapper">
-                        <span>Sample Name</span>
+                <div class="lists">
+                  <div *ngFor="let list of allList" class="list_panel" [ngClass]="{ 'active': selectedId == list._id }" (click)="selectList(list._id)">
+                    <div class="col-md-12">
+                      <div class="outer">
+                        <h6>{{list.name}}</h6>
+                        <span>{{list.email}}</span>
+                      </div>
                     </div>
-                </div>
-                <div class="outer">
-                    <div class="col-md-12 border-top list-wrapper">
-                        <span>Testing2</span>
-                    </div>
-                </div>
-                <div class="outer">
-                    <div class="col-md-12 border-top list-wrapper">
-                        <span>Testing3</span>
-                    </div>
-                </div>
-                <div class="outer">
-                    <div class="col-md-12 border-top list-wrapper">
-                        <span>Testing4</span>
-                    </div>
-                </div>
-                <div class="outer">
-                    <div class="col-md-12 border-top list-wrapper">
-                        <span>Testing5</span>
-                    </div>
+                  </div>
                 </div>
               </div>
           </div>
         </div>
       </div>
-      <div class="col-md-7">
+      <div class="col-md-8">
         <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
                 <div class="col-md-12">
-                  <span><strong>Name:</strong> </span><span>Sample Name</span>
+                  <span><strong>Name:</strong> </span><span *ngIf="selectedList && selectedList.name">{{selectedList.name}}</span>
                 </div>
                 <div class="col-md-12">
-                    <span><strong>Email:</strong> </span><span>sample@gmail.com</span>
+                    <span><strong>Email:</strong> </span><span *ngIf="selectedList && selectedList.email">{{selectedList.email}}</span>
                 </div>
                 <div class="col-md-12">
-                    <span><strong>Phone:</strong> </span><span>9876543210</span>
+                    <span><strong>Phone:</strong> </span><span *ngIf="selectedList && selectedList.phone">{{selectedList.phone}}</span>
                 </div>
                 <div class="col-md-12 btn-wrapper">
-                    <button class="btn btn-default">Add</button>
-                    <button class="btn btn-default">Edit</button>
-                    <button class="btn btn-default">Delete</button>
+                    <button class="btn btn-default" (click)="addListPopup()">Add</button>
+                    <button class="btn btn-default" (click)="editListPopup()">Edit</button>
+                    <button class="btn deactiveRecord" [ngClass]="{'activeRecord': activeRecord == '1' }" (click)="deleteList()">{{activeRecordText}}</button>
                 </div>
               </div>
             </div>
@@ -73,3 +57,128 @@
       </div>
     </div>
 </div>
+
+<popup  #popup1>
+    <div class="row">
+      <div class="pop-1">
+        <div class="col-md-12">
+          <form #addForm="ngForm" (ngSubmit)="addList(addForm.value)">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" required minlength="3" maxlength="20" [(ngModel)]="list.name" name="name" #name="ngModel"  placeholder="name"  autocomplete="off">
+                <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!name.errors.required">
+                    Name is required
+                  </div>
+                  <div [hidden]="!name.errors.minlength">
+                    Name must be at least 3 character long.
+                  </div>
+                  <div [hidden]="!name.errors.maxlength">
+                    Name cannot be more than 20 character long.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="text" class="form-control" id="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [(ngModel)]="list.email" name="email" #email="ngModel"  placeholder="email"    autocomplete="off">
+                  <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger errorMsg">
+                    <div [hidden]="!email.errors.required">
+                      Email id is required
+                    </div>
+                    <div [hidden]="!email.errors.pattern">
+                      Email id  must be valid.
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label for="phone">Phone:</label>
+                  <input type="text" class="form-control" id="phone" required minlength="10" maxlength="10" pattern="[0-9]+" [(ngModel)]="list.phone" name="phone" #phone="ngModel" placeholder="phone"  autocomplete="off">
+                  <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger errorMsg">
+                    <div [hidden]="!phone.errors.required">
+                      Phone number is required
+                    </div>
+                    <div [hidden]="!phone.errors.pattern">
+                      Must be a number
+                    </div>
+                    <div [hidden]="!phone.errors.minlength">
+                      Must be a valid 10 digit number
+                    </div>
+                  </div>
+              </div>
+              <div class="form-group">
+                <div class="alert alert-success" [ngClass]="{'show': successMsg == 'success' }">
+                  <strong>Success!</strong> List Added
+                </div>
+                <div class="save-cancel-btn">
+                  <button type="submit" class="btn btn-primary" [disabled]="!addForm.form.valid">Save</button>
+                  <button class="btn btn-default" (click)="cancelPopup1(addForm)">Cancel</button>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</popup>
+
+
+<popup  #popup2>
+    <div class="row">
+      <div class="pop-1">
+        <div class="col-md-12">
+          <form #editForm="ngForm" (ngSubmit)="editList(editForm.value)">
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" required minlength="3" maxlength="20" [ngModel]="selectedList.name" name="name" #name="ngModel"  placeholder="name"  autocomplete="off">
+                <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!name.errors.required">
+                    Name is required
+                  </div>
+                  <div [hidden]="!name.errors.minlength">
+                    Name must be at least 3 character long.
+                  </div>
+                  <div [hidden]="!name.errors.maxlength">
+                    Name cannot be more than 20 character long.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="text" class="form-control" id="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="selectedList.email" name="email" #email="ngModel"  placeholder="email"    autocomplete="off">
+                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!email.errors.required">
+                    Email id is required
+                  </div>
+                  <div [hidden]="!email.errors.pattern">
+                    Email id  must be valid.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" class="form-control" id="phone" required minlength="10" maxlength="10" pattern="[0-9]+" [ngModel]="selectedList.phone" name="phone" #phone="ngModel" placeholder="phone"  autocomplete="off">
+                <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!phone.errors.required">
+                    Phone number is required
+                  </div>
+                  <div [hidden]="!phone.errors.pattern">
+                    Must be a number
+                  </div>
+                  <div [hidden]="!phone.errors.minlength">
+                    Must be a valid 10 digit number
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="alert alert-success" [ngClass]="{'show': successMsg == 'success' }">
+                    <strong>Success!</strong> List Updated
+                </div>
+                <div class="save-cancel-btn">
+                  <button type="submit" class="btn btn-primary" [disabled]="!editForm.form.valid">Save</button>
+                  <button class="btn btn-default" (click)="cancelPopup2()">Cancel</button>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</popup>

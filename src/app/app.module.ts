@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { PopupModule } from 'ng2-opd-popup';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { Approute } from './app.routes';
@@ -14,9 +16,7 @@ import { DefaultPipe } from './_pipe/default.pipe';
 import { CustomDirective } from './_directives/custom.directive';
 import { AnalysisService } from './_service/analysis.service';
 import { ResearchComponent } from './reference/research/research.component';
-
-
-
+import { ListService } from './_service/list.service';
 
 @NgModule({
   declarations: [
@@ -34,9 +34,11 @@ import { ResearchComponent } from './reference/research/research.component';
     BrowserModule,
     FormsModule,
     RouterModule,
-    RouterModule.forRoot(Approute,{useHash:true})
+    RouterModule.forRoot(Approute,{useHash:true}),
+    PopupModule.forRoot(),
+    HttpModule
   ],
-  providers: [AnalysisService],
+  providers: [AnalysisService, ListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
