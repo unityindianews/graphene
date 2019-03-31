@@ -128,42 +128,42 @@
           <form #editForm="ngForm" (ngSubmit)="editList(editForm.value)">
               <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" required minlength="3" maxlength="20" [ngModel]="selectedList.name" name="name" #name="ngModel"  placeholder="name"  autocomplete="off">
-                <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger errorMsg">
-                  <div [hidden]="!name.errors.required">
+                <input type="text" class="form-control" id="editName" required minlength="3" maxlength="20" [ngModel]="selectedList.name" name="editName" #editName="ngModel"  placeholder="name"  autocomplete="off">
+                <div *ngIf="editName.errors && (editName.dirty || editName.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!editName.errors.required">
                     Name is required
                   </div>
-                  <div [hidden]="!name.errors.minlength">
+                  <div [hidden]="!editName.errors.minlength">
                     Name must be at least 3 character long.
                   </div>
-                  <div [hidden]="!name.errors.maxlength">
+                  <div [hidden]="!editName.errors.maxlength">
                     Name cannot be more than 20 character long.
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="text" class="form-control" id="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="selectedList.email" name="email" #email="ngModel"  placeholder="email"    autocomplete="off">
-                <div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger errorMsg">
-                  <div [hidden]="!email.errors.required">
+                <input type="text" class="form-control" id="editEmail" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" [ngModel]="selectedList.email" name="editEmail" #editEmail="ngModel"  placeholder="email"    autocomplete="off">
+                <div *ngIf="editEmail.errors && (editEmail.dirty || editEmail.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!editEmail.errors.required">
                     Email id is required
                   </div>
-                  <div [hidden]="!email.errors.pattern">
+                  <div [hidden]="!editEmail.errors.pattern">
                     Email id  must be valid.
                   </div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="phone">Phone:</label>
-                <input type="text" class="form-control" id="phone" required minlength="10" maxlength="10" pattern="[0-9]+" [ngModel]="selectedList.phone" name="phone" #phone="ngModel" placeholder="phone"  autocomplete="off">
-                <div *ngIf="phone.errors && (phone.dirty || phone.touched)" class="alert alert-danger errorMsg">
-                  <div [hidden]="!phone.errors.required">
+                <input type="text" class="form-control" id="editPhone" required minlength="10" maxlength="10" pattern="[0-9]+" [ngModel]="selectedList.phone" name="editPhone" #editPhone="ngModel" placeholder="phone"  autocomplete="off">
+                <div *ngIf="editPhone.errors && (editPhone.dirty || editPhone.touched)" class="alert alert-danger errorMsg">
+                  <div [hidden]="!editPhone.errors.required">
                     Phone number is required
                   </div>
-                  <div [hidden]="!phone.errors.pattern">
+                  <div [hidden]="!editPhone.errors.pattern">
                     Must be a number
                   </div>
-                  <div [hidden]="!phone.errors.minlength">
+                  <div [hidden]="!editPhone.errors.minlength">
                     Must be a valid 10 digit number
                   </div>
                 </div>
