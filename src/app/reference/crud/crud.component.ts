@@ -15,7 +15,7 @@ export class CrudComponent implements OnInit {
 
   constructor(private listService:ListService) {
 
-   }
+  }
   list:any;
   allList:any;
   selectedId:any;
@@ -56,7 +56,7 @@ export class CrudComponent implements OnInit {
     this.popup1.show(this.popup1.options);
   }
 
-editListPopup(){
+  editListPopup(){
     this.popup2.options = {
       header: "Edit List",
       color: "#465b66", 
@@ -94,9 +94,11 @@ editListPopup(){
   }
 
   editList(value:any){
-    this.list.name = value.name;
-    this.list.email = value.email;
-    this.list.phone = value.phone;
+    this.list.name = value.editName;
+    this.list.email = value.editEmail;
+    this.list.phone = value.editPhone;
+    
+
     this.listService.updateList(this.selectedId,this.list).subscribe(data => {
       var result = data.result;
       if(result=="success"){
